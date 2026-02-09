@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="10">
+            <Label Text="Расчёт углов наклона станка" FontSize="20" HorizontalOptions="Center" />
+
+            <Label Text="Тип станка:" FontAttributes="Bold" Margin="0,10,0,0" />
+            <Picker x:Name="MachineTypePicker" SelectedIndex="0" Title="Выберите тип станка">
+                <Picker.Items>
+                    <x:String>Robbins</x:String>
+                    <x:String>Tumi</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Ввод для Point1 -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Point1 (начало бурения): " HeightRequest="20" FontAttributes="Bold" />
+                <Label Text="?" TextColor="Blue" FontSize="16" TextDecorations="Underline" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnQuestionMark1Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Поменяй местами X, Y из прибора." TextColor="Red" HeightRequest="20" FontAttributes="Bold" FontSize="11" />
+            </StackLayout>
+            <Entry x:Name="X1Entry" Placeholder="X_1 (м)" Keyboard="Numeric" />
+            <Entry x:Name="Y1Entry" Placeholder="Y_1 (м)" Keyboard="Numeric" />
+            <Entry x:Name="H1Entry" Placeholder="Высота H_1 (м)" Keyboard="Numeric" />
+
+            <!-- Ввод для Point2 -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Point2 (желаемый выход): " HeightRequest="20" FontAttributes="Bold" />
+                <Label Text="?" TextColor="Blue" FontSize="16" TextDecorations="Underline" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnQuestionMark2Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Поменяй местами X, Y из прибора." TextColor="Red" HeightRequest="20" FontAttributes="Bold" FontSize="11" />
+            </StackLayout>
+            <Entry x:Name="X2Entry" Placeholder="X_2 (м)" Keyboard="Numeric" />
+            <Entry x:Name="Y2Entry" Placeholder="Y_2 (м)" Keyboard="Numeric" />
+            <Entry x:Name="H2Entry" Placeholder="Высота H_2 (м)" Keyboard="Numeric" />
+
+            <!-- Ввод для Point3 (направление) -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Point3 (направление1): " HeightRequest="20" FontAttributes="Bold" />
+                <Label Text="?" TextColor="Blue" FontSize="16" TextDecorations="Underline" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnQuestionMark3Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Поменяй местами X, Y из прибора." TextColor="Red" HeightRequest="20" FontAttributes="Bold" FontSize="11" />
+            </StackLayout>
+            <Entry x:Name="X3Entry" Placeholder="X_3 (м)" Keyboard="Numeric" />
+            <Entry x:Name="Y3Entry" Placeholder="Y_3 (м)" Keyboard="Numeric" />
+
+            <!-- Ввод для Point4 -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Point4 (направление2): " HeightRequest="20" FontAttributes="Bold" />
+                <Label Text="?" TextColor="Blue" FontSize="16" TextDecorations="Underline" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnQuestionMark4Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="Поменяй местами X, Y из прибора." TextColor="Red" HeightRequest="20" FontAttributes="Bold" FontSize="11" />
+            </StackLayout>
+            <Entry x:Name="X4Entry" Placeholder="X_4 (м)" Keyboard="Numeric" />
+            <Entry x:Name="Y4Entry" Placeholder="Y_4 (м)" Keyboard="Numeric" />
+
+            <!-- Ввод углов K и T -->
+            <!--
+            <Label Text="Углы (по желанию, в градусах):" FontAttributes="Bold" />
+            <Entry x:Name="KDegEntry" Placeholder="K (градусы)" Keyboard="Numeric" />
+            <Entry x:Name="TDegEntry" Placeholder="T (градусы)" Keyboard="Numeric" />
+            -->
+            <Button Text="Рассчитать" Clicked="OnCalculateClicked" />
+            
+
+            <Label x:Name="ResultLabel" Text="" TextColor="Black" FontSize="14" Margin="0,20,0,0" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

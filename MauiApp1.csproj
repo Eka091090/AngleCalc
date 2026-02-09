@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Вариант для нескольких платформ -->
+    <TargetFrameworks>net9.0-ios;net9.0-maccatalyst;net9.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MauiApp1</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Поддержка платформ -->
+    <ApplicationTitle>MauiApp1</ApplicationTitle>
+    <ApplicationId>com.companyname.mauiapp1</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Минимальная поддержка OS -->
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Иконки, Splash Screen, изображения, шрифты -->
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+    <MauiImage Include="Resources\Images\*" />
+    <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+    <MauiFont Include="Resources\Fonts\*" />
+
+    <!-- Общие Raw Assets -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="Raw\%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- Конкретное подключение файла AboutAssets.txt -->
+  <ItemGroup>
+    <MauiAsset Include="Resources\Raw\**" LogicalName="Raw\%(RecursiveDir)%(Filename)%(Extension)" />
+    <MauiAsset Include="Resources\Raw\AboutAssets.txt" LogicalName="Raw\AboutAssets.txt" />
+    <!-- Если нужно, добавьте библиотеку или другие ресурсы -->
+  </ItemGroup>
+  <ItemGroup>
+    <MauiXaml Update="ImagePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="ResultPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="SplashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SplashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>

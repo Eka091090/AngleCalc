@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SplashPage"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Калькулятор углов наклона" 
+                   FontSize="24"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <Image Source="robbins.png" 
+               Aspect="AspectFit"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center" />
+
+            <Label Text="© 2026, Гриник Антон Вячеславович"
+                   FontSize="18"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
